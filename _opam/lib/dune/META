@@ -1,0 +1,5 @@
+package "configurator" (
+  directory = "configurator"
+  version = "3.12.1"
+  requires = "dune-configurator"
+)

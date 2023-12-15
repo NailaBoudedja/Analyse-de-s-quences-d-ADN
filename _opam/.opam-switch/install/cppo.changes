@@ -1,0 +1,11 @@
+opam-version: "2.0"
+added: [
+  "bin/cppo" {"F:S3167168T1702652744.93"}
+  "doc/cppo" {"D"}
+  "doc/cppo/LICENSE.md" {"F:S1499T1702652744.93"}
+  "doc/cppo/README.md" {"F:S13753T1702652744.93"}
+  "lib/cppo" {"D"}
+  "lib/cppo/META" {"F:S0T1702652744.93"}
+  "lib/cppo/dune-package" {"F:S169T1702652744.93"}
+  "lib/cppo/opam" {"F:S1025T1702652744.93"}
+]
