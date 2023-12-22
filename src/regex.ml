@@ -22,15 +22,38 @@ let rec expr_repeat n e =
 
 
 
+
+
+
+
+
+
 (*tester si le langage reconnu par l'expression e ne contient le mot vide(renvoie true) ou non(renvoie false)*)    
-let rec is_empty e =
-  match e with
-    | Eps -> true 
-    | Base a -> false
-    | Joker -> false
-    | Concat (a, b) -> is_empty a && is_empty b
-    | Alt (a, b) -> is_empty a && is_empty b
-    | Star a -> is_empty a
+
+
+let  is_empty e =
+  let rec aux  list = 
+  match list with
+  |[] -> true 
+  | Eps :: list'-> aux list'
+  | Base (a):: list' -> false
+  | Joker::list' -> false
+  | Concat (a, b)::list' -> aux(a::b::list')
+  | Alt (a, b)::list' -> aux(a::b::list')
+  | Star (a):: list' -> aux (a::list')
+
+  in aux [e]
+
+
+
+
+
+
+
+
+
+
+
 
 
 (*tester si le mot vide appartient au langage reconnu par l'expression e*)    
@@ -44,15 +67,43 @@ let rec null e =
   | Star a -> true  (*le lengage reconnu par star a tjr le mot vide*)
 
 
+
+
+
+
+
+
+
+
+
 (*tester si le langage reconnu par l'expression e est fini ou non*)
-let rec is_finite e =
-  match e with
-  | Eps -> true
-  | Base _ -> true
-  | Joker -> true
-  | Concat (a, b) -> is_finite a && is_finite b
-  | Alt (a, b) -> is_finite a && is_finite b
-  | Star a -> is_empty a (*si a est une expression vide donc le langage est fini*)
+let  is_finite e =
+  let rec aux list = 
+  match list  with
+  | [] -> true
+  | Eps:: list' -> aux list' 
+  | Base(a)::list' -> aux list' 
+  | Joker::list' -> aux list' 
+  | Concat (a, b)::list' -> aux (a::b::list')
+  | Alt (a, b)::list' -> aux (a::b::list')
+  | Star(a)::list' -> is_empty a (*si a est une expression vide donc le langage est fini*)
+  in aux [e]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
